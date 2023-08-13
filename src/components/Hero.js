@@ -18,7 +18,7 @@ function Hero() {
             Kami menawarkan pelayanan terbaik dari kami untuk membantu anda mengurus si kesayangan
             </p>
             <button className="btn btn-md bg-accent hover:bg-accent-hover md:btn-lg transition-all">
-              <a href="#">
+              <a href="/booking">
                 Mari Salon
               </a>
             </button>
