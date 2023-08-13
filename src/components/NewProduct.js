@@ -1,6 +1,5 @@
 import React from "react";
 import Projects from "./Projects";
-import Fade from 'react-reveal/Fade';
 
 function NewProduct() {
   return (

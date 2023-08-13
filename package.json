@@ -40,6 +40,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@heroicons/react": "^1.0.6",
     "autoprefixer": "^10.4.2",
     "framer-motion": "^6.2.8",

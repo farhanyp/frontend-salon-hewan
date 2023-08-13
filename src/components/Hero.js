@@ -1,6 +1,5 @@
 import React from "react";
 import pet from "../assets/img/kucing.png";
-import Fade from 'react-reveal/Fade';
 
 function Hero() {
   return (
