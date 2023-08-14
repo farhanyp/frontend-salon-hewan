@@ -1,6 +1,6 @@
 import React from "react";
 import { FiInstagram} from "react-icons/fi";
-import {AiFillLinkedin} from "react-icons/ai"
+import {AiOutlineWhatsApp} from "react-icons/ai"
 
 const Footer = () => {
   return (
@@ -9,11 +9,11 @@ const Footer = () => {
         <div className="flex flex-col lg:flex-row space-y-6 lg:space-y-0 items-center justify-between">
           <div className="flex space-x-6 items-center justify-center">
           <li className='flex justify-center text-accent'>
-        <a className='text-base px-6' href="https://www.instagram.com/farhan_yp52/">
+        <a className='text-base px-6' href="#">
           <FiInstagram/>
         </a>
-        <a className='text-base' href="https://www.linkedin.com/in/farhan-yudha-pratama-3b095a17a/">
-          <AiFillLinkedin/>
+        <a className='text-base' href="https://api.whatsapp.com/send?phone=6285211913891&text=Halo, saya ingin bertanya!">
+          <AiOutlineWhatsApp/>
         </a>
       </li>
           </div>

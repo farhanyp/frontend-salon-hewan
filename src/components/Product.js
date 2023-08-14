@@ -7,7 +7,10 @@ function Product({products}) {
         <section
         id="product"
         className="lg:h-[100vh] bg-white lg:bg-cover lg:bg-center lg:bg-no-repeat py-32 lg:py-0 overflow-hidden">
-          <div className='flex justify-center lg:pt-32'>
+          <div className='text-center lg:text-4xl lg:pt-32'>
+          <h1 className='text-primary'>Produk yang tersedia</h1>
+          </div>
+          <div className='flex justify-center lg:pt-10'>
           <table className='border-1 border-primary'>
                   <thead>
                     <tr>

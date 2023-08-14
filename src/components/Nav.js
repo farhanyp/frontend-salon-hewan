@@ -5,8 +5,8 @@ const Nav = () => {
     
     <nav>
       <ul className='flex space-x-8 capitalize text-base font-medium'>
-        <a href='/'>Home</a>
-        <a href='/#about'>About</a>
+        <a href='/'>Beranda</a>
+        <a href='/#about'>Tentang</a>
         <a href='/product'>Produk</a>
       </ul>
     </nav>

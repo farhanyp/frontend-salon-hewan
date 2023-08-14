@@ -14,7 +14,6 @@ function Login() {
     useEffect(() => {
         const authToken = Cookies.get('authorization');
         if (authToken) {
-        console.log('Authorization Token:', authToken);
         navigate("/dashboard")
         } else {
         console.log('Authorization Token not found in cookies.');

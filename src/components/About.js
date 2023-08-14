@@ -23,7 +23,7 @@ function About() {
               </p>
             </div>
             <button className="btn btn-md bg-accent hover:bg-accent-hover transition-all">
-            <a href="https://api.whatsapp.com/send?phone=6285211913891&text=Halo, saya ingin bertanya!">Contact Me</a>
+            <a href="https://api.whatsapp.com/send?phone=6285211913891&text=Halo, saya ingin bertanya!">Hubungi Saya</a>
             </button>
           </div>
         </div>

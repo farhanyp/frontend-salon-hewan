@@ -32,7 +32,7 @@ const Header = () => {
         <div className="lg:block hidden">
         <button className="btn btn-md rounded-md bg-accent hover:bg-accent-hover md:btn-lg transition-all">
               <a href="/booking">
-                Booking
+                Memesan
               </a>
             </button>
         </div>

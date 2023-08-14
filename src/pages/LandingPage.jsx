@@ -15,7 +15,6 @@ function LandingPage() {
     <Brand/>
     <About/>
     <Footer/>
-    <BackToTop/>
     </>
   )
 }

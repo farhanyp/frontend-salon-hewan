@@ -1,18 +1,17 @@
 import React, { useState} from 'react'
 import axios from 'axios';
+import { format, parse, addDays } from 'date-fns';
+import idLocale from 'date-fns/locale/id'
 
-function Booking() {
-    const currentDate = new Date();
-    const futureDate = new Date(currentDate);
-    futureDate.setDate(currentDate.getDate() + 3);
+function Booking({startTimes, endTimes}) {
     const [formData, setFormData] = useState({
         ownerName: '',
         phoneNumber: '',
         email: '',
         petName: '',
         petTypes: '',
-        startTime: "2023-08-10",
-        endTime: "2023-08-10",
+        startTime: "",
+        endTime: "",
         specialNeeds: false,
         paymentStatus: false
       });
@@ -21,98 +20,213 @@ function Booking() {
       const handleSubmit = async (e) => {
         e.preventDefault();
 
-
-
-        console.log(formData)
-
-        try {
-
-          axios.post("https://salon-hewan.vercel.app/api/v1/member/lodging/create", formData)
-        .then( (response) => {
-          console.log('Data sent successfully:', response.data);
-        })
-        .catch(error => {
-            console.error('Login error:', error.response.data);
-          });
-
-        } catch (error) {
-          console.error('Error sending data:', error);
+        if(formData.specialNeeds){
+          if(formData.specialNeeds === "true"){
+            formData.specialNeeds = true;
+          }else{
+            formData.specialNeeds = false;
+          }
         }
+
+        if(formData.startTime){
+          const originalDate = parse(formData.startTime, "dd MMMM yyyy", new Date(), {
+            locale: idLocale,
+          });
+          formData.startTime = format(originalDate, 'yyyy-MM-dd');
+        }
+
+        if(formData.endTime){
+          const originalDate = parse(formData.endTime, "dd MMMM yyyy", new Date(), {
+            locale: idLocale,
+          });
+          formData.endTime = format(originalDate, 'yyyy-MM-dd');
+        }
+
+        const newFormData = {
+          ownerName: formData.ownerName,
+          phoneNumber: formData.phoneNumber,
+          email: formData.email,
+          petName: formData.petName,
+          petTypes: formData.petTypes,
+          startTime: formData.startTime,
+          endTime: formData.endTime,
+          specialNeeds: formData.specialNeeds,
+          paymentStatus: formData.paymentStatus,
+        }
+
+        console.log(newFormData)
+
+          try {
+            axios.post("https://salon-hewan.vercel.app/api/v1/member/lodging/create", newFormData)
+            .then( (response) => {
+            console.log('Data sent successfully:', response.data);
+          })
+          .catch(error => {
+              console.error('Login error:', error.response.data);
+            });
+
+          } catch (error) {
+            console.error('Error sending data:', error);
+          }
       };
 
       const handleInputChange = (e) => {
         const { name, value } = e.target;
+      
+        if (name === "startTime") {
+          const startTime = value;
+          const originalDate = parse(startTime, "dd MMMM yyyy", new Date(), {
+            locale: idLocale,
+          });
+          
+          setFormData((prevData) => ({
+            ...prevData,
+            startTime: value,
+            endTime: "", // Clear endTime when startTime changes
+          }));
+      
+          // Perform additional logic if needed
+        } else if (name === "duration") {
+          // Parse the duration value to an integer
+          const durationValue = parseInt(value, 10);
+          
+          // Calculate the end time using addDays
+          const endTimeDate = addDays(parse(formData.startTime, "dd MMMM yyyy", new Date(), {
+            locale: idLocale,
+          }), durationValue);
+          
+          const endTimeFormatted = format(endTimeDate, "dd MMMM yyyy", { locale: idLocale });
+      
+          setFormData((prevData) => ({
+            ...prevData,
+            endTime: endTimeFormatted,
+          }));
+        } else if (name === "specialNeeds") {
+
+          setFormData((prevData) => ({
+            ...prevData,
+            specialNeeds: value,
+          }));
+        }
+
         setFormData((prevData) => ({
           ...prevData,
-          [name]: value
+          [name]: value,
         }));
-
       };
+      
 
   return (
     <section
         id="product"
-        className="lg:h-[100vh] bg-white lg:bg-cover lg:bg-center lg:bg-no-repeat py-32 lg:py-0 overflow-hidden">
-          {/* <div className='flex justify-center lg:pt-32 lg: pb-20 text-3xl'>
-          <h1 className='text-primary'>Form Pengiriman Data Ke API</h1>
-          </div> */}
-          <div className='flex justify-center lg:pt-28'>
+        className=" bg-white lg:bg-cover lg:bg-center lg:bg-no-repeat py-32 lg:py-0 overflow-hidden">
+          <div className='text-center lg:text-4xl lg:pt-32'>
+          <h1 className='text-primary'>Pemesanan penginapan</h1>
+          </div>
+          <div className='flex justify-center lg:pt-10'>
 
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className='pb-10'>
             <div className="mb-4">
               <label htmlFor="ownername" className="font-medium mb-1">
-                Owner Name:
+                Nama Pemilik:
               </label>
-              <input type="text" id="ownername" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400" placeholder="Enter your Name" name="ownerName" onChange={handleInputChange}/>
+              <input type="text" id="ownername" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400" placeholder="Masukan Nama" name="ownerName" value={formData.ownerName} onChange={handleInputChange}/>
             </div>
 
             <div className="mb-4">
               <label htmlFor="phone" className="font-medium mb-1">
-                Phone number:
+                Nomor yang bisa dihubungi:
               </label>
-              <input type="text" id="phone" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400" placeholder="Enter your Phone Number" name="phoneNumber" onChange={handleInputChange}/>
+              <input type="text" id="phone" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400" placeholder="Masukan Nomor Telepon/hp" name="phoneNumber" value={formData.phoneNumber} onChange={handleInputChange}/>
             </div>
 
             <div className="mb-4">
               <label htmlFor="email" className="font-medium mb-1">
                 Email:
               </label>
-              <input type="text" id="email" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400" placeholder="Enter your Email" name="email" onChange={handleInputChange}/>
+              <input type="text" id="email" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400" placeholder="Masukan Email" name="email" value={formData.email} onChange={handleInputChange}/>
             </div>
 
             <div className="mb-4">
               <label htmlFor="petName" className="font-medium mb-1">
-                Pet Name:
+                Nama Hewan:
               </label>
-              <input type="text" id="petName" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400" placeholder="Enter your Pet Name" name="petName" onChange={handleInputChange}/>
+              <input type="text" id="petName" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400" placeholder="Masukan Nama Hewan" name="petName" value={formData.petName} onChange={handleInputChange}/>
             </div>
 
 
             <div className="mb-4">
               <label htmlFor="petTypes" className="font-medium mb-1">
-                Pet Type:
+                Tipe Hewan:
               </label>
-              <input type="text" id="petTypes" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400" placeholder="Enter your Pet Type" name="petTypes" onChange={handleInputChange}/>
-            </div>
-
-            {/* <div className="mb-4">
-              <label htmlFor="startTime" className="font-medium mb-1">
-                Start Time:
-              </label>
-              <input type="text" id="startTime" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400" placeholder="Enter your Start Time" name="startTime" onChange={handleInputChange}/>
+              <input type="text" id="petTypes" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400" placeholder="Masukan Tipe Hewan" name="petTypes" value={formData.petTypes} onChange={handleInputChange}/>
             </div>
 
             <div className="mb-4">
-              <label htmlFor="endTime" className="font-medium mb-1">
-                End Time:
+              <label htmlFor="startTime" className="font-medium mb-1">
+                Start Time:
               </label>
-              <input type="text" id="endTime" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400" placeholder="Enter your End Time" name="endTime" onChange={handleInputChange}/>
-            </div> */}
+              <select
+                id='startTime'
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400"
+                value={formData.startTime} // Use value from state
+                name="startTime"
+                onChange={handleInputChange}
+              >
+                <option value="Pilih Tanggal Tersedia">
+                  Pilih Tanggal Tersedia
+                </option>
+                {
+                  startTimes.map((startTime, index) => (
+                  <option key={index} value={startTime}>
+                    {startTime}
+                  </option>
+                  ))
+                }
+              </select>
+            </div>
+
+            <div className="mb-4">
+              <label htmlFor="duration" className="font-medium mb-1">
+                Duration (days):
+              </label>
+              <input
+                type="number"
+                id="duration"
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400"
+                name="duration"
+                placeholder='Masukan jumlah hari'
+                onChange={handleInputChange}
+              />
+            </div>
+
+            <div className="mb-4">
+              <label htmlFor="specialNeeds" className="font-medium mb-1">
+                Apakah perlu Kebutuhan Khusus: 
+              </label>
+              <select
+                id='specialNeeds'
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400"
+                value={formData.startTime} // Use value from state
+                name="specialNeeds"
+                onChange={handleInputChange}
+              >
+                <option>
+                  Masukan Pilihan
+                </option>
+                <option value={true}>
+                  perlu
+                </option>
+                <option value={false}>
+                  tidak perlu
+                </option>
+              </select>
+            </div>
             
             <button
               type="submit"
               className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-300">
-              Login
+              Pesan
             </button>
           </form>
 
