@@ -7,7 +7,7 @@ function Product({products}) {
         <section
         id="product"
         className="lg:h-[100vh] bg-white lg:bg-cover lg:bg-center lg:bg-no-repeat py-32 lg:py-0 overflow-hidden">
-          <div className='text-center lg:text-4xl lg:pt-32'>
+          <div className='text-center text-3xl mb-5 lg:text-4xl lg:pt-32'>
           <h1 className='text-primary'>Produk yang tersedia</h1>
           </div>
           <div className='flex justify-center lg:pt-10'>
@@ -15,22 +15,22 @@ function Product({products}) {
                   <thead>
                     <tr>
                       <td className='text-center text-secondary font-bold border-2 border-black'>
-                        <p className='px-6'>No</p>
+                        <p className='lg:px-6'>No</p>
                       </td>
                       {/* <td className='text-center text-secondary font-bold border-2 border-black'>
-                        <p className='px-6'>Image</p>
+                        <p className='lg:px-6'>Image</p>
                       </td> */}
                       <td className='text-center text-secondary font-bold border-2 border-black'>
-                        <p className='px-6'>Name</p>
+                        <p className='lg:px-6'>Name</p>
                       </td>
                       <td className='text-center text-secondary font-bold border-2 border-black'>
-                        <p className='px-6'>QTY</p>
+                        <p className='lg:px-6'>QTY</p>
                       </td>
                       <td className='text-center text-secondary font-bold border-2 border-black'>
-                        <p className='px-6'>Description</p>
+                        <p className='lg:px-6'>Description</p>
                       </td>
                       <td className='text-center text-secondary font-bold border-2 border-black'>
-                        <p className='px-6'>Price</p>
+                        <p className='lg:px-6'>Price</p>
                       </td>
                     </tr>
                   </thead>

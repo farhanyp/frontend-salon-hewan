@@ -116,11 +116,11 @@ function Booking({startTimes, endTimes}) {
         id="product"
         className=" bg-white lg:bg-cover lg:bg-center lg:bg-no-repeat py-32 lg:py-0 overflow-hidden">
           <div className='text-center lg:text-4xl lg:pt-32'>
-          <h1 className='text-primary'>Pemesanan penginapan</h1>
+          <h1 className='text-primary text-3xl pb-5 lg:pb-1 lg:text-4xl'>Pemesanan penginapan</h1>
           </div>
           <div className='flex justify-center lg:pt-10'>
 
-          <form onSubmit={handleSubmit} className='pb-10'>
+          <form onSubmit={handleSubmit} className='pb-10 px-5'>
             <div className="mb-4">
               <label htmlFor="ownername" className="font-medium mb-1">
                 Nama Pemilik:

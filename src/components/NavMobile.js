@@ -47,15 +47,10 @@ function NavMobile() {
         <div onClick={() => setIsOpen(false)} className='cursor-pointer absolute top-8 right-8'>
           <XIcon className='w-8 h-8'/>
         </div>
-        {
-          navigation.map((item, index) => {
-            return(
-              <li key={index} className='mb-8 '>
-                <Link to={item.href} smooth={true} duration={500} offset={-70} className='text-white text-xl cursor-pointer capitalize'>{item.name}</Link>
-              </li>
-            )
-          })
-        }
+        <a className='text-white text-xl cursor-pointer capitalize pb-5' href='/'>Beranda</a>
+        <a className='text-white text-xl cursor-pointer capitalize pb-5' href='/#about'>Tentang</a>
+        <a className='text-white text-xl cursor-pointer capitalize pb-10' href='/product'>Produk</a>
+        <a className='text-white text-xl cursor-pointer capitalize border-4 font-bold px-5 py-2' href='/booking'>Booking</a>
       </motion.ul>
     </nav>
   )
