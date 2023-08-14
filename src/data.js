@@ -7,22 +7,6 @@ import SkillImg4 from "./assets/img/skills/novo.png";
 import SkillImg5 from "./assets/img/skills/ricard.png";
 import SkillImg6 from "./assets/img/skills/friskies.png";
 
-// navigation
-export const navigation = [
-  {
-    name: "home",
-    href: "home",
-  },
-  {
-    name: "portfolio",
-    href: "portfolio",
-  },
-  {
-    name: "about",
-    href: "about",
-  }
-];
-
 // projects
 export const projectsNav = [
   {
