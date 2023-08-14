@@ -125,21 +125,21 @@ function Booking({startTimes, endTimes}) {
               <label htmlFor="ownername" className="font-medium mb-1">
                 Nama Pemilik:
               </label>
-              <input type="text" id="ownername" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400" placeholder="Masukan Nama" name="ownerName" value={formData.ownerName} onChange={handleInputChange}/>
+              <input type="text" id="ownername" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400" placeholder="Masukan Nama" name="ownerName" value={formData.ownerName} onChange={handleInputChange} required/>
             </div>
 
             <div className="mb-4">
               <label htmlFor="phone" className="font-medium mb-1">
                 Nomor yang bisa dihubungi:
               </label>
-              <input type="text" id="phone" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400" placeholder="Masukan Nomor Telepon/hp" name="phoneNumber" value={formData.phoneNumber} onChange={handleInputChange}/>
+              <input type="text" id="phone" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400" placeholder="Masukan Nomor Telepon/hp" name="phoneNumber" value={formData.phoneNumber} onChange={handleInputChange} required/>
             </div>
 
             <div className="mb-4">
               <label htmlFor="email" className="font-medium mb-1">
                 Email:
               </label>
-              <input type="text" id="email" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400" placeholder="Masukan Email" name="email" value={formData.email} onChange={handleInputChange}/>
+              <input type="text" id="email" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400" placeholder="Masukan Email" name="email" value={formData.email} onChange={handleInputChange} required/>
             </div>
 
             <div className="mb-4">
@@ -167,9 +167,10 @@ function Booking({startTimes, endTimes}) {
                 value={formData.startTime} // Use value from state
                 name="startTime"
                 onChange={handleInputChange}
+                required
               >
                 <option value="Pilih Tanggal Tersedia">
-                  Pilih Tanggal Tersedia
+                  Pilih Tanggal Tersedia (wajib)
                 </option>
                 {
                   startTimes.map((startTime, index) => (
@@ -192,6 +193,7 @@ function Booking({startTimes, endTimes}) {
                 name="duration"
                 placeholder='Masukan jumlah hari'
                 onChange={handleInputChange}
+                required
               />
             </div>
 
