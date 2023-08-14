@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="flex flex-col lg:flex-row space-y-6 lg:space-y-0 items-center justify-between">
           <div className="flex space-x-6 items-center justify-center">
           <li className='flex justify-center text-accent'>
-        <a className='text-base px-6' href="#">
+        <a className='text-base px-6' href="instagram.com">
           <FiInstagram/>
         </a>
         <a className='text-base' href="https://api.whatsapp.com/send?phone=6285211913891&text=Halo, saya ingin bertanya!">
