@@ -5,7 +5,6 @@ import Hero from '../components/Hero'
 import About from '../components/About'
 import Brand from '../components/Brand'
 import Footer from '../components/Footer'
-import BackToTop from '../components/BackToTop'
 
 function LandingPage() {
   return (

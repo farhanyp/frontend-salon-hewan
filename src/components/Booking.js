@@ -1,5 +1,4 @@
 import React, { useState} from 'react'
-import axios from 'axios';
 import { format, parse, addDays } from 'date-fns';
 import idLocale from 'date-fns/locale/id'
 
@@ -56,28 +55,24 @@ function Booking({startTimes, endTimes}) {
 
         console.log(newFormData)
 
-          try {
-            axios.post("https://salon-hewan.vercel.app/api/v1/member/lodging/create", newFormData)
-            .then( (response) => {
-            console.log('Data sent successfully:', response.data);
-          })
-          .catch(error => {
-              console.error('Login error:', error.response.data);
-            });
+          // try {
+          //   axios.post("https://salon-hewan.vercel.app/api/v1/member/lodging/create", newFormData)
+          //   .then( (response) => {
+          //   console.log('Data sent successfully:', response.data);
+          // })
+          // .catch(error => {
+          //     console.error('Login error:', error.response.data);
+          //   });
 
-          } catch (error) {
-            console.error('Error sending data:', error);
-          }
+          // } catch (error) {
+          //   console.error('Error sending data:', error);
+          // }
       };
 
       const handleInputChange = (e) => {
         const { name, value } = e.target;
       
         if (name === "startTime") {
-          const startTime = value;
-          const originalDate = parse(startTime, "dd MMMM yyyy", new Date(), {
-            locale: idLocale,
-          });
           
           setFormData((prevData) => ({
             ...prevData,
