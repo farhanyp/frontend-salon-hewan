@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
-import { navigation } from '../data'
 import { XIcon } from '@heroicons/react/outline'
 import { MenuAlt3Icon } from '@heroicons/react/outline'
 import { motion } from 'framer-motion'
-import { Link } from 'react-scroll'
 
 function NavMobile() {
   const [isOpen, setIsOpen] = useState(false)
