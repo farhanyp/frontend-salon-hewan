@@ -56,8 +56,6 @@ function Booking({startTimes, endTimes}) {
           paymentStatus: formData.paymentStatus,
         }
 
-        console.log(newFormData)
-
           try {
             axios.post("https://salon-hewan.vercel.app/api/v1/member/lodging/create", newFormData)
             .then( (response) => {
@@ -209,7 +207,7 @@ function Booking({startTimes, endTimes}) {
               <select
                 id='specialNeeds'
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400"
-                value={formData.startTime} // Use value from state
+                value={formData.specialNeeds}
                 name="specialNeeds"
                 onChange={handleInputChange}
               >
