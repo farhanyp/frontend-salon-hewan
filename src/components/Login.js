@@ -41,7 +41,6 @@ function Login() {
         .then( (response) => {
             setAuthorization(response.data.data.token)
             Cookies.set('authorization', response.data.data.token)
-            // navigate('/dashboard');
         })
         .catch(error => {
             console.error('Login error:', error);

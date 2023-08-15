@@ -6,6 +6,7 @@ import LandingPage from "./pages/LandingPage";
 import ProductPage from "./pages/ProductPage";
 import LoginPage from "./pages/LoginPage";
 import BookingPage from "./pages/BookingPage";
+import Success from "./components/Success";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="/product" element={<ProductPage/>}/>
           <Route path="/login-admin" element={<LoginPage/>}/>
           <Route path="/booking" element={<BookingPage/>}/>
+          <Route path="/success-booking" element={<Success/>}/>
         </Routes>
       </BrowserRouter>
   );

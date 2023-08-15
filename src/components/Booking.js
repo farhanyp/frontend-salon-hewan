@@ -1,6 +1,8 @@
 import React, { useState} from 'react'
 import { format, parse, addDays } from 'date-fns';
 import idLocale from 'date-fns/locale/id'
+import { useNavigate } from 'react-router'
+import axios from 'axios';
 
 function Booking({startTimes, endTimes}) {
     const [formData, setFormData] = useState({
@@ -14,6 +16,7 @@ function Booking({startTimes, endTimes}) {
         specialNeeds: false,
         paymentStatus: false
       });
+    const navigate = useNavigate()
 
 
       const handleSubmit = async (e) => {
@@ -55,18 +58,20 @@ function Booking({startTimes, endTimes}) {
 
         console.log(newFormData)
 
-          // try {
-          //   axios.post("https://salon-hewan.vercel.app/api/v1/member/lodging/create", newFormData)
-          //   .then( (response) => {
-          //   console.log('Data sent successfully:', response.data);
-          // })
-          // .catch(error => {
-          //     console.error('Login error:', error.response.data);
-          //   });
+          try {
+            axios.post("https://salon-hewan.vercel.app/api/v1/member/lodging/create", newFormData)
+            .then( (response) => {
+            console.log('Data sent successfully:', response.data);
+            navigate("/success-booking")
 
-          // } catch (error) {
-          //   console.error('Error sending data:', error);
-          // }
+          })
+          .catch(error => {
+              console.error('Login error:', error.response.data);
+            });
+
+          } catch (error) {
+            console.error('Error sending data:', error);
+          }
       };
 
       const handleInputChange = (e) => {
@@ -159,7 +164,7 @@ function Booking({startTimes, endTimes}) {
 
             <div className="mb-4">
               <label htmlFor="startTime" className="font-medium mb-1">
-                Start Time:
+                Start Time: 
               </label>
               <select
                 id='startTime'

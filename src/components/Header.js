@@ -34,7 +34,7 @@ const Header = () => {
               <a href="/booking">
                 Memesan
               </a>
-            </button>
+        </button>
         </div>
         {/* NavMobile */}
         <div className="lg:hidden ">
