@@ -30,11 +30,18 @@ const Header = () => {
         </div>
         {/* socials */}
         <div className="lg:block hidden">
-        <button className="btn btn-md rounded-md bg-accent hover:bg-accent-hover md:btn-lg transition-all">
-              <a href="/booking">
-                Memesan
-              </a>
-        </button>
+          <div className="flex gap-2">
+            <button className="btn px-7 py-1 rounded-md bg-accent hover:bg-accent-hover md:btn-lg transition-all">
+                  <a href="/booking">
+                    Memesan
+                  </a>
+            </button>
+            <button className="btn btn-md rounded-md bg-secondary hover:bg-accent-hover md:btn-lg transition-all">
+                  <a href="https://dashboard-salon-hewan.vercel.app">
+                    Login (Admin)
+                  </a>
+            </button>
+          </div>
         </div>
         {/* NavMobile */}
         <div className="lg:hidden ">

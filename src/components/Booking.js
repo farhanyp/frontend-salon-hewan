@@ -9,6 +9,7 @@ function Booking({startTimes, endTimes}) {
         ownerName: '',
         phoneNumber: '',
         email: '',
+        service: '',
         petName: '',
         petTypes: '',
         startTime: "",
@@ -48,6 +49,7 @@ function Booking({startTimes, endTimes}) {
           ownerName: formData.ownerName,
           phoneNumber: formData.phoneNumber,
           email: formData.email,
+          service: formData.service,
           petName: formData.petName,
           petTypes: formData.petTypes,
           startTime: formData.startTime,
@@ -143,6 +145,29 @@ function Booking({startTimes, endTimes}) {
                 Email:
               </label>
               <input type="text" id="email" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400" placeholder="Masukan Email" name="email" value={formData.email} onChange={handleInputChange} required/>
+            </div>
+
+            <div className="mb-4">
+              <label htmlFor="service" className="font-medium mb-1">
+                Pelayanan:
+              </label>
+              <select
+                id='service'
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400"
+                value={formData.service}
+                name="service"
+                onChange={handleInputChange}
+              >
+                <option>
+                  Masukan Pilihan
+                </option>
+                <option value="grooming">
+                Grooming
+                </option>
+                <option value="penginapan">
+                Penginapan
+                </option>
+              </select>
             </div>
 
             <div className="mb-4">
