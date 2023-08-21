@@ -37,7 +37,7 @@ const Header = () => {
                   </a>
             </button>
             <button className="btn btn-md rounded-md bg-secondary hover:bg-accent-hover md:btn-lg transition-all">
-                  <a href="https://dashboard-salon-hewan.vercel.app">
+                  <a href="https://salon-hewan.vercel.app/admin/login">
                     Login (Admin)
                   </a>
             </button>

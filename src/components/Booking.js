@@ -121,7 +121,7 @@ function Booking({startTimes, endTimes}) {
         id="product"
         className=" bg-white lg:bg-cover lg:bg-center lg:bg-no-repeat py-32 lg:py-0 overflow-hidden">
           <div className='text-center lg:text-4xl lg:pt-32'>
-          <h1 className='text-primary text-3xl pb-5 lg:pb-1 lg:text-4xl'>Pemesanan penginapan</h1>
+          <h1 className='text-primary text-3xl pb-5 font-bold lg:pb-1 lg:text-4xl'>Pemesanan</h1>
           </div>
           <div className='flex justify-center lg:pt-10'>
 
@@ -137,14 +137,14 @@ function Booking({startTimes, endTimes}) {
               <label htmlFor="phone" className="font-medium mb-1">
                 Nomor yang bisa dihubungi:
               </label>
-              <input type="text" id="phone" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400" placeholder="Masukan Nomor Telepon/hp" name="phoneNumber" value={formData.phoneNumber} onChange={handleInputChange} required/>
+              <input type="phone" id="phone" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400" placeholder="Masukan Nomor Telepon/hp" name="phoneNumber" value={formData.phoneNumber} onChange={handleInputChange} required/>
             </div>
 
             <div className="mb-4">
               <label htmlFor="email" className="font-medium mb-1">
                 Email:
               </label>
-              <input type="text" id="email" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400" placeholder="Masukan Email" name="email" value={formData.email} onChange={handleInputChange} required/>
+              <input type="email" id="email" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400" placeholder="Masukan Email" name="email" value={formData.email} onChange={handleInputChange} required/>
             </div>
 
             <div className="mb-4">
@@ -180,14 +180,14 @@ function Booking({startTimes, endTimes}) {
 
             <div className="mb-4">
               <label htmlFor="petTypes" className="font-medium mb-1">
-                Tipe Hewan:
+                Tipe Hewan (Kucing, Anjing dan dll) :
               </label>
               <input type="text" id="petTypes" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400" placeholder="Masukan Tipe Hewan" name="petTypes" value={formData.petTypes} onChange={handleInputChange}/>
             </div>
 
             <div className="mb-4">
               <label htmlFor="startTime" className="font-medium mb-1">
-                Start Time: 
+                Tanggal Booking: 
               </label>
               <select
                 id='startTime'
@@ -212,7 +212,7 @@ function Booking({startTimes, endTimes}) {
 
             <div className="mb-4">
               <label htmlFor="duration" className="font-medium mb-1">
-                Duration (days):
+                Lama Pengambilan (Masukan dalam jumlah hari):
               </label>
               <input
                 type="number"
